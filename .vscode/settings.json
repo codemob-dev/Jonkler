@@ -1,0 +1,9 @@
+{
+    "Lua.diagnostics.globals": [
+        "SMODS",
+        "NFS"
+    ],
+    "Lua.diagnostics.disable": [
+        "undefined-global"
+    ]
+}

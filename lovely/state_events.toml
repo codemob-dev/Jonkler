@@ -1,0 +1,26 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local hand_space = e or math.min(#G.deck.cards, G.hand.config.card_limit - #G.hand.cards)"
+position = "before"
+payload = """
+local cards_needed_to_draw = e or (G.hand.config.card_limit - #G.hand.cards)
+if G.GAME.blind.name == 'The Serpent' and
+        not G.GAME.blind.disabled and
+        (G.GAME.current_round.hands_played > 0 or
+        G.GAME.current_round.discards_used > 0) then
+            cards_needed_to_draw = 3
+    end
+
+if G.GAME.starting_params.minimalistic 
+    and #G.deck.cards < cards_needed_to_draw then
+        delay(0.3)
+        G.FUNCS.draw_from_discard_to_deck()
+end
+"""
+match_indent = true
