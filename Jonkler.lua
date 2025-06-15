@@ -17,4 +17,12 @@ SMODS.Atlas {
 	py = 95,
 }
 
+SMODS.Atlas {
+	key = 'jon_jokers',
+	path = "jokers.png",
+	px = 71,
+	py = 95,
+}
+
 NFS.load(Jonkler.path .. 'data/decks/minimalistic.lua')()
+NFS.load(Jonkler.path .. 'data/jokers/jkr.lua')()
