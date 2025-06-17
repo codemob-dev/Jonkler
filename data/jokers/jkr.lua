@@ -1,3 +1,5 @@
+-- scrapped
+
 function get_vowel_indexes(str)
     local indexes = {}
     local pos = 0
@@ -41,7 +43,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.setting_blind then
-            for _, consumable in ipairs(G.consumeables.cards) do
+            for _, consumable in ipairs(G.consumeables.cards) do 
                 local text = consumable.config.center.name
 
                 local indexes = get_vowel_indexes(text)
