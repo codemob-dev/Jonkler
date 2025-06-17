@@ -27,3 +27,4 @@ SMODS.Atlas {
 NFS.load(Jonkler.path .. 'data/decks/minimalistic.lua')()
 -- scrapped
 -- NFS.load(Jonkler.path .. 'data/jokers/jkr.lua')()
+NFS.load(Jonkler.path .. 'data/jokers/hoarder.lua')()
