@@ -1,5 +1,17 @@
 local old_can_sell_card = G.FUNCS.can_sell_card
 local old_sell_card = G.FUNCS.sell_card
+G.FUNCS.can_sell_card = function(card)
+    if next(find_joker("jon_Hoarder")) then
+        return false
+    end
+    return old_can_sell_card(card)
+end
+G.FUNCS.sell_card = function(card)
+    if next(find_joker("jon_Hoarder")) then
+        return
+    end
+    return old_sell_card(card)
+end
 SMODS.Joker {
     key = "hoarder",
     name = "jon_Hoarder",
@@ -18,7 +30,7 @@ SMODS.Joker {
     config = {
         extra = {
             jokers = 2,
-            consumables = 1,
+            consumables = 2,
         },
     },
     loc_txt = {
@@ -35,16 +47,9 @@ SMODS.Joker {
     add_to_deck = function(self, card, from_debuff)
 		G.jokers.config.card_limit       = G.jokers.config.card_limit       + card.ability.extra.jokers
         G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.consumables
-        G.FUNCS.can_sell_card = function(_card)
-            return false
-        end
-        G.FUNCS.sell_card = function(_card)
-        end
 	end,
     remove_from_deck = function(self, card, from_debuff)
         G.jokers.config.card_limit       = G.jokers.config.card_limit       - card.ability.extra.jokers
         G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.consumables
-        G.FUNCS.can_sell_card = old_can_sell_card
-        G.FUNCS.sell_card = old_sell_card
     end,
 }
