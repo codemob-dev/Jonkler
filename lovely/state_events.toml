@@ -13,10 +13,10 @@ position = "after"
 payload = """
 local cards_needed_to_draw = e or (G.hand.config.card_limit - #G.hand.cards)
 if G.GAME.blind.name == 'The Serpent' and
-        not G.GAME.blind.disabled and
-        (G.GAME.current_round.hands_played > 0 or
-        G.GAME.current_round.discards_used > 0) then
-            cards_needed_to_draw = 3
+    not G.GAME.blind.disabled and
+    (G.GAME.current_round.hands_played > 0 or
+    G.GAME.current_round.discards_used > 0) then
+        cards_needed_to_draw = 3
 end
 
 if G.GAME.starting_params.minimalistic 

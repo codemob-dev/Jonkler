@@ -1,14 +1,12 @@
-local old_can_sell_card = G.FUNCS.can_sell_card
-local old_sell_card = G.FUNCS.sell_card
 SMODS.Joker {
-    key = "amish_joker",
-    name = "jon_Amish_Joker",
+    key = "jon_round_joker",
+    name = "jon_Round_Joker",
     atlas = 'jon_jokers',
     pos = {
-        x = 2,
+        x = 5,
         y = 0,
     },
-    rarity = 1,
+    rarity = 2,
     cost = 5,
     unlocked = true,
     discovered = false,
@@ -17,14 +15,14 @@ SMODS.Joker {
     blueprint_compat = true,
     config = {
         extra = {
-            mult = 2,
+            mult = 5,
         },
     },
     loc_txt = {
-        name = "Amish Joker",
+        name = "Round Joker",
         text = {
-            "{C:mult}+#1#{} mult for every card",
-            "without a modifier played.",
+            "Gives {C:mult}+#1#{} mult for each",
+            "played 2, 5, or 10.",
         }
     },
 	loc_vars = function(self, info_queue, card)
@@ -33,13 +31,14 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play then
-			if context.other_card.config.center == G.P_CENTERS.c_base then
+        if context.individual and context.cardarea == G.play then
+            local id = context.other_card:get_id()
+			if id == 2 or id == 5 or id == 10 then
 				return {
 					mult = card.ability.extra.mult,
 					card = context.other_card
 				}
 			end
 		end
-	end
+    end
 }

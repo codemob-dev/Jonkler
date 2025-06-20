@@ -35,7 +35,7 @@ SMODS.Joker {
     },
     loc_txt = {
         name = "Hoarder",
-        text = {"{C:attention}+#1#{} joker slots, {C:attention}+#2#{} consumable slot.",
+        text = {"{C:attention}+#1#{} joker slots, {C:attention}+#2#{} consumable slots.",
                 "Jokers and consumables cannot be sold.",
         }
     },
